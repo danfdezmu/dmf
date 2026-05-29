@@ -29,7 +29,32 @@ test('home page shows portfolio content from database', function () {
             ->has('services', 3)
             ->has('experiences', 1)
             ->has('education')
+            ->has('companyWebsites')
             ->has('projects', 1),
+        );
+});
+
+test('home page shows unique company website previews', function () {
+    SiteSetting::query()->create(SiteSetting::defaults());
+
+    Experience::factory()->create([
+        'company' => 'Empresa A',
+        'website_url' => 'https://empresa-a.test',
+        'link_preview' => [
+            'title' => 'Empresa A',
+            'description' => 'Descripcion',
+            'image' => null,
+            'url' => 'https://empresa-a.test',
+            'domain' => 'empresa-a.test',
+        ],
+        'is_published' => true,
+    ]);
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->has('companyWebsites', 1)
+            ->where('companyWebsites.0.link_preview.title', 'Empresa A'),
         );
 });
 

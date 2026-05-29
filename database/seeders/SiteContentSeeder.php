@@ -62,6 +62,8 @@ class SiteContentSeeder extends Seeder
             Experience::query()->insert([
                 [
                     'company' => 'Grupo Salinas',
+                    'logo_url' => '/images/logos/grupo-salinas.svg',
+                    'website_url' => 'https://www.gruposalinas.com',
                     'role' => 'Desarrollador de tecnologia',
                     'location' => 'Ciudad de Mexico, Mexico',
                     'started_at' => '2024-05-01',
@@ -74,6 +76,8 @@ class SiteContentSeeder extends Seeder
                 ],
                 [
                     'company' => 'Universidad Autonoma del Estado de Morelos',
+                    'logo_url' => '/images/logos/uaem.svg',
+                    'website_url' => 'https://www.uaem.mx',
                     'role' => 'Catedratico universitario',
                     'location' => 'Cuernavaca, Morelos, Mexico',
                     'started_at' => '2024-01-01',
@@ -86,6 +90,8 @@ class SiteContentSeeder extends Seeder
                 ],
                 [
                     'company' => 'Universidad Autonoma del Estado de Morelos',
+                    'logo_url' => '/images/logos/uaem.svg',
+                    'website_url' => 'https://www.uaem.mx',
                     'role' => 'Jefe de departamento',
                     'location' => 'Cuernavaca, Morelos, Mexico',
                     'started_at' => '2023-01-01',
@@ -98,6 +104,8 @@ class SiteContentSeeder extends Seeder
                 ],
                 [
                     'company' => 'Universidad Autonoma del Estado de Morelos',
+                    'logo_url' => '/images/logos/uaem.svg',
+                    'website_url' => 'https://www.uaem.mx',
                     'role' => 'Asistente tecnico',
                     'location' => 'Cuernavaca, Morelos, Mexico',
                     'started_at' => '2019-09-01',
@@ -110,6 +118,8 @@ class SiteContentSeeder extends Seeder
                 ],
                 [
                     'company' => 'Nissan Mexicana',
+                    'logo_url' => '/images/logos/nissan.svg',
+                    'website_url' => 'https://www.nissan.com.mx',
                     'role' => 'Practicante universitario',
                     'location' => 'Jiutepec, Morelos, Mexico',
                     'started_at' => '2018-02-01',

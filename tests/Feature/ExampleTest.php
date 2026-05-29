@@ -19,6 +19,7 @@ test('returns a successful response', function () {
             ->has('services')
             ->has('experiences')
             ->has('education')
+            ->has('companyWebsites')
             ->where('auth.user', null),
         );
 });

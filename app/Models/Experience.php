@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Database\Factories\ExperienceFactory;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Experience extends Model
 {
-    /** @use HasFactory<\Database\Factories\ExperienceFactory> */
+    /** @use HasFactory<ExperienceFactory> */
     use HasFactory;
 
     /**
@@ -18,6 +20,9 @@ class Experience extends Model
      */
     protected $fillable = [
         'company',
+        'logo_url',
+        'website_url',
+        'link_preview',
         'role',
         'location',
         'started_at',
@@ -36,6 +41,7 @@ class Experience extends Model
             'started_at' => 'date',
             'ended_at' => 'date',
             'is_published' => 'boolean',
+            'link_preview' => 'array',
         ];
     }
 
@@ -49,6 +55,48 @@ class Experience extends Model
             $end = $this->ended_at?->locale('es')->translatedFormat('M Y') ?? 'Presente';
 
             return trim("{$start} – {$end}");
+        });
+    }
+
+    /**
+     * @return Attribute<string|null, never>
+     */
+    protected function logo(): Attribute
+    {
+        return Attribute::get(function (): ?string {
+            if (blank($this->logo_url)) {
+                return null;
+            }
+
+            if (str_starts_with($this->logo_url, 'http://') || str_starts_with($this->logo_url, 'https://')) {
+                return $this->logo_url;
+            }
+
+            if (str_starts_with($this->logo_url, '/')) {
+                return $this->logo_url;
+            }
+
+            return Storage::disk('public')->url($this->logo_url);
+        });
+    }
+
+    /**
+     * @return Attribute<string, never>
+     */
+    protected function companyInitials(): Attribute
+    {
+        return Attribute::get(function (): string {
+            $words = preg_split('/\s+/', trim($this->company)) ?: [];
+
+            if (count($words) === 0) {
+                return '?';
+            }
+
+            if (count($words) === 1) {
+                return mb_strtoupper(mb_substr($words[0], 0, 2));
+            }
+
+            return mb_strtoupper(mb_substr($words[0], 0, 1).mb_substr($words[1], 0, 1));
         });
     }
 
