@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Grupo Salinas">
+  <rect width="128" height="128" rx="16" fill="#c41230"/>
+  <path fill="#fff" d="M28 88V40h18c14 0 22 7 22 18 0 8-4 14-11 16l14 14h-16L45 76h-9v12H28zm18-28c5 0 8-3 8-8s-3-8-8-8H45v16h1z"/>
+  <path fill="#fff" d="M72 88V40h32v12H84v8h16v12H84v16H72z"/>
+</svg>

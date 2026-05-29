@@ -14,6 +14,8 @@ type Experience = {
     period: string;
     sort_order: number;
     is_published: boolean;
+    logo: string | null;
+    company_initials: string;
 };
 
 defineProps<{
@@ -49,6 +51,7 @@ defineOptions({
             <table class="w-full text-left text-sm">
                 <thead class="border-b border-sidebar-border/70 bg-muted/40">
                     <tr>
+                        <th class="px-4 py-3 font-medium">Logo</th>
                         <th class="px-4 py-3 font-medium">Empresa</th>
                         <th class="px-4 py-3 font-medium">Rol</th>
                         <th class="px-4 py-3 font-medium">Periodo</th>
@@ -62,6 +65,24 @@ defineOptions({
                         :key="experience.id"
                         class="border-b border-sidebar-border/50 last:border-0"
                     >
+                        <td class="px-4 py-3">
+                            <div
+                                class="flex size-10 items-center justify-center overflow-hidden rounded-lg border border-sidebar-border/70 bg-white p-1"
+                            >
+                                <img
+                                    v-if="experience.logo"
+                                    :src="experience.logo"
+                                    :alt="experience.company"
+                                    class="max-h-full max-w-full object-contain"
+                                />
+                                <span
+                                    v-else
+                                    class="text-xs font-bold text-muted-foreground"
+                                >
+                                    {{ experience.company_initials }}
+                                </span>
+                            </div>
+                        </td>
                         <td class="px-4 py-3">{{ experience.company }}</td>
                         <td class="px-4 py-3 text-muted-foreground">{{ experience.role }}</td>
                         <td class="px-4 py-3">{{ experience.period }}</td>

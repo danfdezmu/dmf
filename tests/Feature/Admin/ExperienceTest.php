@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\Experience;
+use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Inertia\Testing\AssertableInertia as Assert;
 
 uses(RefreshDatabase::class);
 
@@ -27,6 +29,22 @@ test('authenticated users can create experiences', function () {
         ->assertRedirect(route('admin.experiences.index'));
 
     expect(Experience::query()->where('company', 'Acme Corp')->exists())->toBeTrue();
+});
+
+test('experiences expose resolved logo url on home page', function () {
+    SiteSetting::query()->create(SiteSetting::defaults());
+
+    Experience::factory()->create([
+        'company' => 'Empresa con logo',
+        'logo_url' => '/images/logos/test.svg',
+        'is_published' => true,
+    ]);
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('experiences.0.logo', '/images/logos/test.svg'),
+        );
 });
 
 test('authenticated users can delete experiences', function () {
