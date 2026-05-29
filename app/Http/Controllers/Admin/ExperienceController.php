@@ -77,16 +77,16 @@ class ExperienceController extends Controller
      */
     private function experienceAttributes(StoreExperienceRequest $request, Experience $experience): array
     {
-        $attributes = $request->safe()->except(['logo', 'remove_logo', 'refresh_preview']);
+        $attributes = $request->safe()->except(['logo', 'logo_url', 'remove_logo', 'refresh_preview']);
 
         if ($request->boolean('remove_logo')) {
             $this->deleteStoredLogo($experience);
             $attributes['logo_url'] = null;
-        }
-
-        if ($request->hasFile('logo')) {
+        } elseif ($request->hasFile('logo')) {
             $this->deleteStoredLogo($experience);
             $attributes['logo_url'] = $this->storeLogo($request->file('logo'));
+        } elseif ($request->has('logo_url')) {
+            $attributes['logo_url'] = $request->input('logo_url');
         }
 
         $attributes['link_preview'] = $this->resolveLinkPreview(
