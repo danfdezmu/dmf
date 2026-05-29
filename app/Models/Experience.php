@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class Experience extends Model
 {
@@ -76,7 +75,7 @@ class Experience extends Model
                 return $this->logo_url;
             }
 
-            return Storage::disk('public')->url($this->logo_url);
+            return '/storage/'.$this->logo_url;
         });
     }
 

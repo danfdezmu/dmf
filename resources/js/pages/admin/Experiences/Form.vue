@@ -155,7 +155,7 @@ defineOptions({
                     <Input
                         id="logo_url"
                         v-model="form.logo_url"
-                        type="url"
+                        type="text"
                         placeholder="https://... o /images/logos/empresa.svg"
                         @input="form.remove_logo = false"
                     />
