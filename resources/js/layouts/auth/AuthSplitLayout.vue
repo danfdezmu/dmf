@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import AppLogoIcon from '@/components/AppLogoIcon.vue';
+import BrandLogo from '@/components/BrandLogo.vue';
 import { home } from '@/routes';
 
 const page = usePage();
@@ -24,8 +24,8 @@ defineProps<{
                 :href="home()"
                 class="relative z-20 flex items-center text-lg font-medium"
             >
-                <AppLogoIcon class="mr-2 size-8 fill-current text-white" />
-                {{ name }}
+                <BrandLogo class="mr-2 h-10 w-10 rounded-md object-contain" />
+                <span class="sr-only">{{ name }}</span>
             </Link>
         </div>
         <div class="lg:p-8">

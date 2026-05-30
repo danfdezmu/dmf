@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('brand_label')->default('DHMF DEV');
+            $table->string('brand_label')->default('DMF');
             $table->string('name');
             $table->string('role');
             $table->text('intro');

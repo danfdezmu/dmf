@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/propuesta/mauricio', function () {
+    $path = public_path('propuesta/mauricio/index.html');
+
+    if (! is_file($path)) {
+        abort(404);
+    }
+
+    return response(
+        file_get_contents($path),
+        headers: ['Content-Type' => 'text/html; charset=UTF-8'],
+    );
+})->name('propuesta.mauricio');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 

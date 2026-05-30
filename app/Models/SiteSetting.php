@@ -44,7 +44,7 @@ class SiteSetting extends Model
     public static function defaults(): array
     {
         return [
-            'brand_label' => 'DHMF DEV',
+            'brand_label' => 'DMF',
             'name' => 'Dan Haziel Munoz Fernandez',
             'role' => 'Desarrollador de tecnologia',
             'intro' => 'Desarrollo soluciones web de punta a punta (FrontEnd y BackEnd) con React, TypeScript, Laravel y PHP. Experiencia en sector corporativo, educacion superior y practicas en industria automotriz.',
