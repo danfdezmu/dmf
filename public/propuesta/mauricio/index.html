@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propuesta ERP Escolar — Cotización y Alcance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --navy-dark: #0f172a;
+            --blue: #2563eb;
+            --blue-light: #dbeafe;
+            --slate: #334155;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --accent: #0ea5e9;
+            --success: #059669;
+            --radius: 12px;
+            --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+            --max: 1100px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--slate);
+            background: var(--bg);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Instrument Sans', 'DM Sans', sans-serif;
+            color: var(--navy-dark);
+            line-height: 1.25;
+        }
+
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* —— Nav —— */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .nav-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 1rem;
+            list-style: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .nav-links a { color: var(--muted); text-decoration: none; }
+        .nav-links a:hover { color: var(--blue); }
+
+        /* —— Hero —— */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #1d4ed8 100%);
+            color: var(--white);
+            padding: 4rem 1.5rem 5rem;
+            text-align: center;
+        }
+
+        .hero-inner { max-width: var(--max); margin: 0 auto; }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 42rem;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 2.5rem;
+            font-size: 0.875rem;
+            opacity: 0.85;
+        }
+
+        .hero-meta strong { display: block; font-size: 1.25rem; color: var(--white); }
+
+        /* —— Layout —— */
+        .container {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        section {
+            padding-top: 3.5rem;
+            scroll-margin-top: 4rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--blue-light);
+        }
+
+        .section-header h2 {
+            font-size: 1.65rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            color: var(--navy);
+        }
+
+        .card p, .card li { margin-bottom: 0.5rem; }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        /* —— Principles —— */
+        .principle {
+            padding: 1rem 1.25rem;
+            background: var(--bg);
+            border-radius: 8px;
+            border-left: 4px solid var(--blue);
+        }
+
+        .principle strong { display: block; color: var(--navy); margin-bottom: 0.25rem; }
+
+        /* —— Stack —— */
+        .stack-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stack-item:last-child { border-bottom: none; }
+
+        .stack-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--blue-light);
+            color: var(--navy);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .stack-item h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .stack-item p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+        /* —— Module blocks —— */
+        .module-tag {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.65rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.04em;
+        }
+
+        .module-meta {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        /* —— Tables —— */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        thead { background: var(--navy); color: var(--white); }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:nth-child(even) { background: #f8fafc; }
+        tbody tr:hover { background: var(--blue-light); }
+
+        th { font-weight: 600; white-space: nowrap; }
+
+        /* —— Pricing —— */
+        .price-hero {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(180deg, var(--blue-light) 0%, var(--white) 100%);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .price-hero .amount {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .price-hero .label { color: var(--muted); font-size: 0.9rem; }
+
+        .milestone {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .milestone-pct {
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .milestone strong { color: var(--navy-dark); }
+
+        /* —— Timeline —— */
+        .timeline { position: relative; padding-left: 1.5rem; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.35rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+            padding-left: 1.25rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.15rem;
+            top: 0.35rem;
+            width: 10px;
+            height: 10px;
+            background: var(--blue);
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            box-shadow: 0 0 0 2px var(--blue);
+        }
+
+        .timeline-item h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .timeline-item .weeks { font-size: 0.8rem; color: var(--blue); font-weight: 600; }
+
+        /* —— Lists —— */
+        ul.check-list { list-style: none; padding: 0; }
+
+        ul.check-list li {
+            padding: 0.4rem 0 0.4rem 1.75rem;
+            position: relative;
+        }
+
+        ul.check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        ul.bullet-list { padding-left: 1.25rem; margin: 0.5rem 0; }
+        ul.bullet-list li { margin-bottom: 0.35rem; }
+
+        .note {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+            padding: 0.75rem 1rem;
+            background: #fffbeb;
+            border-left: 3px solid #f59e0b;
+            border-radius: 0 6px 6px 0;
+            margin-top: 1rem;
+        }
+
+        .acceptance-box {
+            background: var(--navy-dark);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+        }
+
+        .acceptance-box h3 { color: var(--white); margin-bottom: 1rem; }
+        .acceptance-box ol { padding-left: 1.25rem; }
+        .acceptance-box li { margin-bottom: 0.5rem; opacity: 0.95; }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        @media print {
+            .nav { display: none; }
+            .hero { padding: 2rem 1rem; }
+            section { page-break-inside: avoid; }
+            .card { box-shadow: none; }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            th, td { padding: 0.5rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <span class="nav-brand">ERP Escolar</span>
+        <ul class="nav-links">
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#stack">Tecnología</a></li>
+            <li><a href="#modulos">Módulos</a></li>
+            <li><a href="#fases">Fases</a></li>
+            <li><a href="#economica">Inversión</a></li>
+            <li><a href="#clausulas">Cláusulas</a></li>
+            <li><a href="#personalizacion">Fase 10</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-inner">
+        <span class="hero-badge">Documento confidencial · Propuesta comercial</span>
+        <h1>Propuesta económica y técnica de desarrollo</h1>
+        <p>Plataforma integral de gestión escolar (ERP &amp; SaaS) — diseño, desarrollo, automatización e implementación</p>
+        <div class="hero-meta">
+            <div><strong>18-24 semanas</strong> desarrollo estimado</div>
+            <div><strong>10 fases</strong> de entrega</div>
+            <div><strong>4 módulos</strong> + plataforma</div>
+            <div><strong>Mayo 2026</strong> versión documento</div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- 1. RESUMEN -->
+    <section id="resumen">
+        <div class="section-header">
+            <h2>1. Resumen ejecutivo</h2>
+            <p>Visión del proyecto y principios de la solución</p>
+        </div>
+
+        <div class="card">
+            <p>El presente documento detalla la <strong>propuesta técnica y económica</strong> para el diseño, desarrollo, automatización e implementación de una solución digital integral de gestión escolar (ERP). El sistema centralizará los flujos operativos clave de la institución: control académico cotidiano, administración financiera automatizada y canales de interacción en tiempo real securizados.</p>
+            <p style="margin-top: 1rem;">La solución se plantea bajo una arquitectura <strong>SaaS (Software as a Service) híbrida</strong>: el núcleo soporta el escenario de la institución en esta primera etapa y está estructuralmente listo para incorporar y aislar lógicamente planteles adicionales (Primaria, Secundaria, Preparatoria o Universidad) de forma nativa en el futuro.</p>
+        </div>
+
+        <div class="section-header" style="padding-top: 1rem; border: none; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.2rem;">Principios generales</h3>
+        </div>
+        <div class="grid-2">
+            <div class="principle"><strong>Roles por escuela</strong> Administrador, director, coordinador, docente, tutor, alumno y roles de plataforma.</div>
+            <div class="principle"><strong>Branding dinámico</strong> Logo, colores y favicon configurables por plantel.</div>
+            <div class="principle"><strong>Entrega por fases</strong> Cada bloque se valida antes de continuar; reduce riesgo según el calendario escolar.</div>
+            <div class="principle"><strong>Personalización final</strong> Tras el núcleo operativo, ajustes visuales y funcionales simples acordados (Fase 10).</div>
+        </div>
+    </section>
+
+    <!-- 2. STACK -->
+    <section id="stack">
+        <div class="section-header">
+            <h2>2. Arquitectura y solución tecnológica</h2>
+            <p>Stack seleccionado para rendimiento empresarial y escalabilidad</p>
+        </div>
+
+        <div class="card">
+            <div class="stack-item">
+                <div class="stack-icon">API</div>
+                <div>
+                    <h4>Ecosistema backend — Laravel (PHP 8.4+)</h4>
+                    <p>Motor del backend: seguridad de datos, lógica de negocio, cifrado y control estricto de roles y permisos (ACL empresariales por plantel).</p>
+                </div>
+            </div>
+            <div class="stack-item">
+                <div class="stack-icon">UI</div>
+                <div>
+                    <h4>Interfaz dinámica — Vue.js 3 + Inertia.js</h4>
+                    <p>Experiencia tipo SPA sin recargas molestas; datos desde el servidor sin APIs REST externas ni problemas de CORS.</p>
+                </div>
+            </div>
+            <div class="stack-item">
+                <div class="stack-icon">WS</div>
+                <div>
+                    <h4>Tiempo real — Laravel Reverb + Laravel Echo</h4>
+                    <p>WebSockets nativos para chat y alertas instantáneas con bajo consumo de memoria en el servidor.</p>
+                </div>
+            </div>
+            <div class="stack-item">
+                <div class="stack-icon">⚡</div>
+                <div>
+                    <h4>Rendimiento — Redis + colas Laravel</h4>
+                    <p>Procesamiento en segundo plano de notificaciones push, correos y cargas masivas sin interrumpir la sesión del usuario.</p>
+                </div>
+            </div>
+            <div class="stack-item">
+                <div class="stack-icon">📱</div>
+                <div>
+                    <h4>Ecosistema móvil — Capacitor (Ionic SDK)</h4>
+                    <p>Estructura para encapsular Vue y distribución híbrida en Android (Google Play) e iOS (App Store), según alcance acordado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MÓDULOS -->
+    <section id="modulos">
+        <div class="section-header">
+            <h2>3. Desglose modular del alcance</h2>
+            <p>Cuatro módulos funcionales + plataforma, alineados con el roadmap de implementación</p>
+        </div>
+
+        <!-- Módulo I -->
+        <div class="card">
+            <span class="module-tag">MÓDULO I</span>
+            <h3>Núcleo de comunicación e interacción</h3>
+            <p class="module-meta">Fases 4–5 · Usuarios: coordinación, administración, tutores, docentes, alumnos</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Funcionalidad</th><th>Descripción del alcance</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tablón de avisos oficial</strong></td>
+                            <td>Circulares con texto estructurado y adjuntos (PDF, imágenes). Segmentación por plantel, nivel, grado, grupo o sección. Registro de lectura.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Encuestas institucionales</strong></td>
+                            <td>Opción única, múltiple, sí/no y texto libre. Resultados agregados para la coordinación.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Calendario escolar</strong></td>
+                            <td>Eventos, vacaciones, exámenes y días festivos/inhábiles (resaltado visual). Suscripción iCal (Google, Apple, Outlook).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chat uno a uno</strong></td>
+                            <td>Mensajería tutor–docente con horario laboral configurable; bloqueo fuera de horario escolar. Indicador de leído.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="note">Criterios de aceptación: aviso segmentado publicado, encuesta respondida, calendario con evento/festivo, chat validado dentro y fuera de horario.</p>
+        </div>
+
+        <!-- Módulo II -->
+        <div class="card">
+            <span class="module-tag">MÓDULO II</span>
+            <h3>Control académico y seguimiento pedagógico</h3>
+            <p class="module-meta">Fases 2–3, 8 · Usuarios: docentes, tutores, alumnos, coordinación</p>
+            <ul class="bullet-list">
+                <li><strong>Pase de lista digital</strong> — Estados <strong>P</strong> (Presente), <strong>F</strong> (Falta) y <strong>R</strong> (Retardo/Reporte); interfaz optimizada para móvil.</li>
+                <li><strong>Alertas de inasistencia</strong> — Notificación al tutor/alumno al guardar la asistencia diaria (cola + push/correo).</li>
+                <li><strong>Agenda de tareas</strong> — Publicación por sección con fecha límite; entrega del alumno y revisión del docente.</li>
+                <li><strong>Evaluaciones por criterio</strong> — Observaciones privadas del docente (<code>teacher_notes</code>) visibles solo para alumno y tutor.</li>
+                <li><strong>Exámenes en línea</strong> — Según contrato: opción múltiple, respuesta abierta, calificación automática/manual.</li>
+                <li><strong>Boleta digital</strong> — Consolidación por periodo; publicación y conformidad con firma digital interna.</li>
+                <li><strong>Bitácora disciplinaria y médica</strong> — Incidencias por tipo y gravedad (menor, medio, mayor). UI completa Fase 8.</li>
+                <li><strong>Justificantes</strong> — Carpeta/repositorio por grupo y sección (materia); solicitud, archivo y aprobación. Fase 8.</li>
+            </ul>
+            <p class="note">Requisitos específicos del cliente: P/F/R en lista; observaciones solo para alumno/tutor; cumpleaños en registro de usuarios (Fase 10 o hito acordado).</p>
+        </div>
+
+        <!-- Módulo III -->
+        <div class="card">
+            <span class="module-tag">MÓDULO III</span>
+            <h3>Gestión financiera, cobranza y facturación</h3>
+            <p class="module-meta">Fase 6 · Usuarios: cobranza, administración, tutores</p>
+            <ul class="bullet-list">
+                <li><strong>Estado de cuenta</strong> — Cargos del mes, saldos vencidos e historial de abonos por alumno.</li>
+                <li><strong>Cobranza masiva automática</strong> — Laravel Scheduler: inyección de colegiaturas mensuales sin captura manual repetitiva.</li>
+                <li><strong>Mora y descuentos</strong> — Recargos moratorios y descuentos por pronto pago (fijo o porcentual).</li>
+                <li><strong>Registro de pagos</strong> — Parciales o totales; actualización automática de saldo.</li>
+                <li><strong>Recordatorios</strong> — Push/correo preventivos antes y después de vencimientos.</li>
+                <li><strong>Panel de morosidad</strong> — Cartera vencida para el área de cobranza.</li>
+            </ul>
+        </div>
+
+        <!-- Módulo IV -->
+        <div class="card">
+            <span class="module-tag">MÓDULO IV</span>
+            <h3>Plataforma, matrícula y operación institucional</h3>
+            <p class="module-meta">Fases 0–2, 7–8 · Usuarios: administración, dirección, super admin</p>
+            <ul class="bullet-list">
+                <li><strong>Fundación multi-plantel</strong> — Dominios, login, branding (logo, colores, favicon).</li>
+                <li><strong>ABCC de usuarios</strong> — Altas, bajas, cambios y consultas; roles; invitación por correo; vínculo tutor–alumno.</li>
+                <li><strong>Estructura académica</strong> — Ciclos, niveles, grados, grupos y tutor de grupo.</li>
+                <li><strong>Materias y secciones</strong> — Catálogo, inscripción, vista «Mis clases» del docente.</li>
+                <li><strong>Inscripciones en línea</strong> — Formulario web, documentos (CURP, actas), ficha médica estructurada, aprobación admin.</li>
+                <li><strong>Importación masiva</strong> — Excel/CSV (Laravel Excel); poblar planteles en segundos.</li>
+                <li><strong>Dashboard gerencial</strong> — Morosidad, asistencia %, uso de la plataforma.</li>
+                <li><strong>Auditoría</strong> — Trazabilidad en notas, pagos y cambios de rol.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. FASES -->
+    <section id="fases">
+        <div class="section-header">
+            <h2>4. Planificación, tiempos y entregables</h2>
+            <p>Metodología ágil con hitos de control — 15 semanas + fase de personalización</p>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>Plan comercial (6 etapas · 18-24 semanas)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="weeks">Semanas 1–3</span>
+                        <h4>Fase 1 — Core arquitectónico</h4>
+                        <p>Multi-tenant, modelado relacional MySQL, branding y base de datos.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="weeks">Semanas 4–9</span>
+                        <h4>Fase 2 — Matrícula y académico base</h4>
+                        <p>Paneles admin, importador Excel, inscripciones, pase de lista P/F/R y alertas push.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="weeks">Semanas 10–13</span>
+                        <h4>Fase 3 — Comunicación en tiempo real</h4>
+                        <p>Tablón de anuncios, chat WebSockets (Reverb), middleware de horario.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="weeks">Semanas 14–16</span>
+                        <h4>Fase 4 — Motor financiero</h4>
+                        <p>Colegiaturas automáticas, estado de cuenta, mora y descuentos.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="weeks">Semanas 16–19</span>
+                        <h4>Fase 5 — Adaptación a sitios moviles</h4>
+                        <p>Correcto funcionamiento en dispositivos móviles, android e ios.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="weeks">Semanas 19–24</span>
+                        <h4>Fase 6 — Cierre, despliegue y ajustes necesarios</h4>
+                        <p>Pruebas de estrés, seguridad, Capacitor móvil y producción.</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: var(--navy);">Duración total estimada: 3.5 a 4 meses de desarrollo integral.</p>
+            </div>
+
+            <div class="card">
+                <h3>Roadmap técnico (Fases 0–10)</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Fase</th><th>Nombre</th><th>Módulos</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>0</td><td>Fundación y branding</td><td>IV.1</td></tr>
+                            <tr><td>1</td><td>Usuarios y estructura</td><td>IV.2, IV.3</td></tr>
+                            <tr><td>2</td><td>Materias y secciones</td><td>IV.4</td></tr>
+                            <tr><td>3</td><td>Académico diario</td><td>II.1 – II.6</td></tr>
+                            <tr><td>4</td><td>Comunicación y calendario</td><td>I.1 – I.3</td></tr>
+                            <tr><td>5</td><td>Chat controlado</td><td>I.4</td></tr>
+                            <tr><td>6</td><td>Finanzas y cobranza</td><td>III.1 – III.6</td></tr>
+                            <tr><td>7</td><td>Inscripciones en línea</td><td>IV.5</td></tr>
+                            <tr><td>8</td><td>Imports y analíticas</td><td>II.7–II.8, IV.6–IV.8</td></tr>
+                            <tr><td>9</td><td>Personalización</td><td>Ajustes acordados</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="acceptance-box">
+            <h3>Aceptación por fase</h3>
+            <ol>
+                <li>Demostración en ambiente de pruebas.</li>
+                <li>Checklist de entregables acordados.</li>
+                <li>Acta o correo de aceptación del cliente antes de la siguiente fase.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 5. ECONÓMICA -->
+    <section id="economica">
+        <div class="section-header">
+            <h2>5. Propuesta económica</h2>
+        </div>
+
+        <div class="price-hero">
+            <div class="label">Costo total del desarrollo a la medida</div>
+            <div class="amount">$70,000.00 MXN</div>
+            <div class="label" style="margin-top: 0.5rem;">setenta mil pesos 00/100 M.N. — Monto neto</div>
+        </div>
+
+        <div class="card">
+            <h3>Distribución de pagos</h3>
+            <div class="milestone">
+                <div class="milestone-pct">100%</div>
+                <div>
+                    <strong>A acordar</strong><br />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CLÁUSULAS -->
+    <section id="clausulas">
+        <div class="section-header">
+            <h2>6. Cláusulas y consideraciones</h2>
+            <p>Supuestos, exclusiones y responsabilidades</p>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>Incluido en la propuesta</h3>
+                <ul class="check-list">
+                    <li><strong>Garantía:</strong> 1 año posteriores al despliegue contra bugs o defectos de lógica, sin costo adicional.</li>
+                    <li>Validación por fase con demo y acta de aceptación.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Exclusiones de costos</h3>
+                <ul class="bullet-list">
+                    <li>Servidor VPS de producción (~$20–40 USD/mes).</li>
+                    <li>Hardware y migración histórica masiva sin plan acordado.</li>
+                    <li>Apps nativas independientes del portal responsive (salvo Capacitor en alcance).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Supuestos del cliente</h3>
+            <ul class="bullet-list">
+                <li>Logos, colores, dominio y usuarios responsables de validación por fase.</li>
+                <li>Idioma español y zona horaria América/México_City (configurable por plantel).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 7. FASE 10 -->
+    <section id="personalizacion">
+        <div class="section-header">
+            <h2>7. Fase 10 — Personalización a petición</h2>
+            <p>2–3 semanas al cierre · Ajustes tras el núcleo operativo validado</p>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>Sí incluye</h3>
+                <ul class="check-list">
+                    <li>Ajustes visuales: textos, menús, correos, terminología.</li>
+                    <li>Campos simples en formularios existentes.</li>
+                    <li>Reglas menores: alertas, recordatorios, horarios.</li>
+                    <li>Exportaciones básicas Excel/CSV de vistas existentes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <blockquote class="card" style="border-left: 4px solid var(--blue); font-style: italic; color: var(--navy);">
+            «Primero entregamos un ERP sólido y probado; al final refinamos lo que ustedes quieran que se vea o funcione de forma particular.»
+        </blockquote>
+    </section>
+
+    <!-- 8. MATRIZ -->
+    <section id="matriz">
+        <div class="section-header">
+            <h2>8. Matriz de requisitos del cliente</h2>
+        </div>
+        <div class="card">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Requisito</th><th>Módulo</th><th>Ítem</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Tablón / circulares</td><td>I</td><td>I.1</td></tr>
+                        <tr><td>Encuestas</td><td>I</td><td>I.2</td></tr>
+                        <tr><td>Calendario + iCal</td><td>I</td><td>I.3</td></tr>
+                        <tr><td>Chat + horarios</td><td>I</td><td>I.4</td></tr>
+                        <tr><td>Pase de lista P/F/R</td><td>II</td><td>II.1</td></tr>
+                        <tr><td>Alertas inasistencia</td><td>II</td><td>II.2</td></tr>
+                        <tr><td>Agenda de tareas</td><td>II</td><td>II.3</td></tr>
+                        <tr><td>Observaciones privadas docente</td><td>II</td><td>II.4</td></tr>
+                        <tr><td>Boleta digital</td><td>II</td><td>II.6</td></tr>
+                        <tr><td>Justificantes por grupo/materia</td><td>II</td><td>II.8</td></tr>
+                        <tr><td>Cumpleaños en registro</td><td>IV / Fase 10</td><td>IV.2</td></tr>
+                        <tr><td>Estado de cuenta</td><td>III</td><td>III.1</td></tr>
+                        <tr><td>Cobranza recurrente</td><td>III</td><td>III.2</td></tr>
+                        <tr><td>Mora / descuentos</td><td>III</td><td>III.3</td></tr>
+                        <tr><td>Inscripciones en línea</td><td>IV</td><td>IV.5</td></tr>
+                        <tr><td>Carga masiva CSV/Excel</td><td>IV</td><td>IV.6</td></tr>
+                        <tr><td>Control de acceso (ACL)</td><td>IV</td><td>IV.2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p><strong>ERP Escolar</strong> — Propuesta económica y técnica · Documento generado mayo 2026</p>
+    <p style="margin-top: 0.5rem;">Para imprimir o guardar como PDF: Archivo → Imprimir → Guardar como PDF</p>
+</footer>
+
+</body>
+</html>

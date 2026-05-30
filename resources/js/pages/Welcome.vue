@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import BrandLogo from '@/components/BrandLogo.vue';
 import { dashboard, login } from '@/routes';
 
 type Profile = {
@@ -87,9 +88,10 @@ defineProps<{
             class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 px-6 py-3 backdrop-blur-md"
         >
             <div class="mx-auto flex max-w-[1100px] items-center justify-between gap-4">
-                <span class="font-sans text-base font-bold text-blue-900">
-                    {{ profile.brand }}
-                </span>
+                <BrandLogo
+                    :alt="profile.brand"
+                    class="h-9 w-auto rounded-md"
+                />
 
                 <nav class="flex items-center gap-3">
                     <Link
